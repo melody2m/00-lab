@@ -2,17 +2,17 @@
 
 const names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
-const allProducts = [];
+let allProducts = [];
 const container = document.getElementById('image_container');
-const viewed = [];
-const labels = [];
+let viewed = [];
+let labels = [];
 const pics = [document.getElementById('left'),
                 document.getElementById('center'), //eslint-disable-line
                 document.getElementById('right')]; //eslint-disable-line
 const list = document.getElementById('productlist');
-const totalClicks = 0;
-const views = [];
-const votes = [];
+let totalClicks = 0;
+let views = [];
+let votes = [];
 
 function Product(name) {
   this.name = name;
@@ -59,7 +59,7 @@ function handleClick(event) {
     return alert('Be sure to click directly on an image!!');
   }
   totalClicks += 1;
-  for(const i = 0; i < names.length; i++){
+  for(let i = 0; i < names.length; i++){
     if(event.target.id === allProducts[i].name) {
       allProducts[i].votes += 1;
       console.log(`${event.target.id} has ${allProducts[i].votes} votes in ${allProducts[i].views} views`);
@@ -71,7 +71,7 @@ function handleClick(event) {
 }
 
 function showList() {
-  for(const i = 0; i < allProducts.length; i++) {
+  for(let i = 0; i < allProducts.length; i++) {
     const liEl = document.createElement('li');
     liEl.textContent = `${allProducts[i].name} has ${allProducts[i].votes} votes in ${allProducts[i].views} views`;
     list.appendChild(liEl);
